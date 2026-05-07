@@ -37,7 +37,7 @@ def test_readinto_bytearray_nobackup(tmp_path: Path) -> None:
         ba = bytearray(5)
         assert fp.readinto(ba) == 5
         assert ba == bytearray(b"\xc3\xa5\xc3\xa9\xc3")
-        fp.write(ba)
+        fp.write(bytes(ba))
     assert pylistdir(tmp_path) == ["file.txt"]
     assert p.read_bytes() == b"\xc3\xa5\xc3\xa9\xc3"
 
